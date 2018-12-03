@@ -1,0 +1,67 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\title{AD -- Blatt 9}
+\author{Simon Thelen}
+
+\begin{document}
+    \maketitle
+
+    \section*{Aufgabe 1}
+    \begin{equation*}
+        \begin{array}{ll}
+            s & \operatorname{h}(s) \\
+            \hline
+            61 & 700 \\
+            62 & 318 \\
+            63 & 936 \\
+            64 & 554 \\
+            65 & 172
+        \end{array}
+    \end{equation*}
+
+    \section*{Aufgabe 2}
+    $P_k$ ist die Wahrscheinlichkeit, dass $k$ Werte der Hashtable beim ersten Versuch in einen gegebenen Bucket eingefügt werden sollten.
+
+    \section*{Aufgabe 4}
+    \subsection*{Teilaufgabe 1}
+    \label{subsec:aufgabe4_1}
+
+    Sei $\operatorname{s}(n) = \sum_{k = 1}^{i}{k}$.
+
+    \begin{enumerate}
+        \item Berechne für alle $i \in [1, n]$ das Wert-pro-Volumen-Verhältnis $r_i = \frac{w_i}{v_i}$.
+        (\textit{Laufzeit: $\operatorname{O}(n)$})
+
+        \item Sortiere absteigend nach $r_i$.
+        Gegenstände sind jetzt neu von $1$ bis $n$ durchnummeriert.
+        (\textit{Laufzeit: $\operatorname{O}(n \log{n})$})
+
+        \item Setze alle $a_i$ auf $0$.
+        (\textit{Laufzeit: $\operatorname{O}(n)$})
+
+        \item Gehe alle Gegenstände von $1$ bis $n$ durch.
+        (\textit{Laufzeit: $\operatorname{O}(n)$})
+        \begin{enumerate}
+            \item Setze $a_i$ auf $1$, solange $W \leq \operatorname{s}(i)$
+            \item Wenn $\operatorname{s}(i - 1) < W < \operatorname{s}(i)$, setze $s_i$ auf $\frac{v_i}{W - \operatorname{s}(i - 1)}$ und beende den Algorithmus.
+        \end{enumerate}
+    \end{enumerate}
+
+
+    \section*{Teilaufgabe 2}
+    \begin{gather*}
+        w_1 = 5, w_2 = 3, w_3 = 3 \\
+        v_1 = 4, v_2 = 3, v_3 = 3
+    \end{gather*}
+
+    Der in~\nameref{subsec:aufgabe4_1} beschriebene Algorithmus würde nur $w_1$ mit Wert $5$ verwenden, wenn jedes $a_i \notin \mathbb{Z}$ durch $0$ ersetzt wird.
+    Die perfekte Lösung wäre jedoch in diesem Fall $w_2$ und $w_3$ mit Gesamtwert $6$.
+
+
+\end{document}
